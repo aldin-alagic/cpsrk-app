@@ -1,6 +1,6 @@
 # Overview
 
-This is a React application that provides a mock product cart page. This application was an entry requirement for Speck Academy.
+This is a React application that is going to be used for CPSRK job fair "Tjedan Karijera 2021". The website provides the information about the companies, events, timetables, registration to fair's events.
 
 # Requirements
 Application uses ReactJS 17.0.1.
