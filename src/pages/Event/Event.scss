@@ -1,0 +1,24 @@
+@import "../../theme.scss";
+
+.Event {
+  padding: 0 15px 64px;
+
+  &-Title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  @media screen and ($tablet) {
+    padding: 0 25px 65px;
+  }
+
+  @media screen and ($desktop) {
+    max-width: 930px;
+    padding: 0 0 64px;
+    margin: 0 auto;
+  }
+
+  @media screen and ($desktopLarge) {
+    max-width: 1280px;
+  }
+}
