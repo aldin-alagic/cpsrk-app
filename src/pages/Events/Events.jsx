@@ -1,18 +1,20 @@
 import Section from "../../components/Section/Section";
 import Grid from "../../components/Grid/Grid";
-import EventInfoCard from './../../components/EventInfoCard/EventInfoCard';
+import EventInfoCard from "./../../components/EventInfoCard/EventInfoCard";
 
 import "./Events.scss";
-import * as data from "../../utils/data"
+import * as data from "../../utils/data";
 
-function Events() {
-    //This events mock data will be replaced with an actual Axios or ApiSauce API call
-    const events = data.mockEvents;
+const Events = () => {
+  //This events mock data will be replaced with an actual Axios or ApiSauce API call
+  const events = data.mockEvents;
 
   return (
-    <Section title="Events">
-      <Grid columns="4">
-      {events.length ? (
+    <>
+      <h1 className="Events-Title">Events</h1>
+      <Section withoutTopPadding>
+        <Grid columns="4">
+          {events.length ? (
             events.map((eventItem) => (
               <EventInfoCard
                 key={eventItem.id.toString()}
@@ -27,8 +29,9 @@ function Events() {
           ) : (
             <p>There are no events!</p>
           )}
-      </Grid>
-    </Section>
+        </Grid>
+      </Section>
+    </>
   );
 }
 
