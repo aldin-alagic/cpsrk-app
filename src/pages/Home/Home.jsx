@@ -1,7 +1,7 @@
 import Hero from "../../components/Hero/Hero";
 import Section from "../../components/Section/Section";
 import Grid from "../../components/Grid/Grid";
-import Event from "../../components/Event/Event";
+import EventCard from "../../components/EventCard/EventCard";
 
 import "./Home.scss";
 import * as data from "../../utils/data"
@@ -17,7 +17,7 @@ function Home() {
         <Grid columns="3">
           {events.length ? (
             events.map((eventItem) => (
-              <Event
+              <EventCard
                 key={eventItem.id.toString()}
                 image={eventItem.image}
                 title={eventItem.title}
