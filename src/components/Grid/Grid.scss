@@ -10,12 +10,13 @@
   }
   @media screen and ($desktop) {
     grid-template-columns: repeat(3, 1fr);
-    &_3 {
+    &_4 {
+      grid-template-columns: repeat(4, 1fr);
       padding: 0 32px;
     }
   }
   @media screen and ($desktopLarge) {
-    &_3 {
+    &_4 {
       padding: 0 84px;
     }
   }
