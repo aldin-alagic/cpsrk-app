@@ -2,6 +2,17 @@ import ImageDesign from "../assets/images/design.jpg";
 import ImageDevelopment from "../assets/images/development.jpg";
 import ImageMarketing from "../assets/images/marketing.jpg";
 
+export const mockEvent = {
+  id: 1,
+  image: ImageDesign,
+  title: "UX/UI design workshop",
+  location: "Hodnik FOI-a",
+  date: "14.10. (9:00-12:00h)",
+  attendance: 15,
+  maxAttendance: 60,
+  company: "Speck",
+};
+
 export const mockTopEvents = [
   {
     id: 1,
