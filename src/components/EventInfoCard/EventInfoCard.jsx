@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./EventInfoCard.scss";
 import Button from "../Button/Button";
+
+import "./EventInfoCard.scss";
 
 const EventInfoCard = ({
   title,
