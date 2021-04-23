@@ -23,7 +23,7 @@ class App extends Component {
         <Header />
         <Main>
           <Switch>
-            <Route path="/" component={Events} />
+            <Route path="/events" component={Events} />
             <Route path="/" component={Home} />
             <Redirect to="/" />
           </Switch>
