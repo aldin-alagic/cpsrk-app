@@ -1,5 +1,6 @@
 import React from "react";
 
+import Section from "../../components/Section/Section";
 import EventInfo from './../../components/EventInfo/EventInfo';
 
 import "./Event.scss";
@@ -20,7 +21,7 @@ const Event = () => {
   return (
     <>
       <h1 className="Event-Title">{title}</h1>
-      <section className="Event">
+      <Section withoutTopPadding>
         <EventInfo
           location={location}
           date={date}
@@ -29,7 +30,7 @@ const Event = () => {
           company={company}
           image={image}
         />
-      </section>
+      </Section>
     </>
   );
 };
