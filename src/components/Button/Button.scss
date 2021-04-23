@@ -13,11 +13,13 @@
   transition: $transitionEase;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
+
   &:hover {
     cursor: pointer;
     border-color: $yellow;
     background: $yellow;
   }
+  
   &:focus {
     outline: none;
   }

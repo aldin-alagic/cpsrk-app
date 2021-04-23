@@ -40,39 +40,48 @@
     &-Content {
       padding: 0 25px;
     }
+
     &-Overlay {
       justify-content: flex-start;
     }
+
     &-Heading {
       font-size: 24px;
       max-width: 400px;
     }
+
     &-Subheading {
       max-width: 550px;
     }
   }
+
   @media screen and ($desktop) {
     &-Content {
       padding: 0;
       max-width: 993px;
       margin: 0 auto;
     }
+
     &-Heading {
       font-size: 28px;
       max-width: 500px;
     }
+
     &-Subheading {
       max-width: 700px;
     }
   }
+
   @media screen and ($desktopLarge) {
     height: 500px;
     &-Content {
       max-width: 1280px;
     }
+
     &-Heading {
       font-size: 32px;
     }
+    
     &-Subheading {
       font-size: 16px;
       max-width: 800px;
