@@ -6,8 +6,10 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 
-import Home from "./pages/Home/Home";
 import Events from "./pages/Events/Events";
+import Event from "./pages/Event/Event";
+import Home from "./pages/Home/Home";
+
 
 //Static
 import "./App.scss";
@@ -24,6 +26,7 @@ class App extends Component {
         <Main>
           <Switch>
             <Route path="/events" component={Events} />
+            <Route path="/event" component={Event} />
             <Route path="/" component={Home} />
             <Redirect to="/" />
           </Switch>
