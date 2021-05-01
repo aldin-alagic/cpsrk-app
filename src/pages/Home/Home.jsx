@@ -1,34 +1,43 @@
+import { useEffect, useState } from "react";
 import Hero from "../../components/Hero/Hero";
 import Section from "../../components/Section/Section";
-import Grid from "../../components/Grid/Grid";
 import EventCard from "../../components/EventCard/EventCard";
 
-import "./Home.scss";
-import * as data from "../../utils/data"
+import { Grid } from "../../lib/style/generalStyles";
+import eventsMock from "./../../lib/mock/events";
 
 function Home() {
   //This events mock data will be replaced with an actual Axios/ApiSauce API call
-  const events = data.mockTopEvents;
+  const [events, setEvents] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEvents(eventsMock);
+    }, 1000);
+  }, [events]);
 
   return (
     <>
       <Hero />
       <Section title="Featured events">
-        <Grid columns="3">
-          {events.length ? (
-            events.map((eventItem) => (
-              <EventCard
-                key={eventItem.id.toString()}
-                image={eventItem.image}
-                title={eventItem.title}
-                description={eventItem.description}
-                buttonText="Find out more"
-              />
-            ))
-          ) : (
-            <p>There are no events!</p>
-          )}
-        </Grid>
+        {events && (
+          <Grid columns={3}>
+            {events.map(
+              (event) =>
+                event.isFeatured && (
+                  <EventCard
+                    key={event.id}
+                    image={event.imageUrl}
+                    imageAlt={event.imageAlt}
+                    title={event.title}
+                    description={event.shortDescription}
+                    buttonText="Find out more"
+                    route={`/event/${event.id}`}
+                  />
+                )
+            )}
+          </Grid>
+        )}
       </Section>
     </>
   );
