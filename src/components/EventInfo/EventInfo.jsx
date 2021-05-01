@@ -4,16 +4,12 @@ import Button from "../Button/Button";
 
 import "./EventInfo.scss";
 
-const EventInfo = ({ location, date, attendance, maxAttendance, company, image }) => {
+const EventInfo = ({ location, date, availability, company, image }) => {
   return (
     <>
       <div className="EventInfo">
         <figure className="EventInfo-Figure">
-          <img
-            src={image}
-            alt="UX/UI workshop"
-            className="EventInfo-Image"
-          />
+          <img src={image} alt="UX/UI workshop" className="EventInfo-Image" />
         </figure>
         <div className="EventInfo-Content">
           <div className="EventInfo-ContentRow">
@@ -29,9 +25,7 @@ const EventInfo = ({ location, date, attendance, maxAttendance, company, image }
           <div className="EventInfo-ContentRow">
             <div className="EventInfo-Item">
               <h3 className="EventInfo-ItemTitle">Slobodna mjesta</h3>
-              <p className="EventInfo-ItemValue">
-                {attendance}/{maxAttendance}
-              </p>
+              <p className="EventInfo-ItemValue">{availability}</p>
             </div>
             <div className="EventInfo-Item">
               <h3 className="EventInfo-ItemTitle">Firma</h3>
