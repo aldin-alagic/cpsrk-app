@@ -1,19 +1,17 @@
 import Section from "../../components/Section/Section";
-import Grid from "../../components/Grid/Grid";
 import EventInfoCard from "./../../components/EventInfoCard/EventInfoCard";
 
-import "./Events.scss";
-import * as data from "../../utils/data";
+import { Title, Grid } from "../../lib/style/generalStyles";
+import eventsMock from "./../../lib/mock/events";
 
 const Events = () => {
-  //This events mock data will be replaced with an actual Axios or ApiSauce API call
-  const events = data.mockEvents;
+  const events = eventsMock;
 
   return (
     <>
-      <h1 className="Events-Title">Events</h1>
+      <Title>Events</Title>
       <Section withoutTopPadding>
-        <Grid columns="4">
+        <Grid columns={4}>
           {events.length ? (
             events.map((eventItem) => (
               <EventInfoCard
