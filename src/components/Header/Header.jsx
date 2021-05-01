@@ -1,31 +1,39 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
 
-import "./Header.scss";
-import Logo from "../../assets/images/logo.png";
+import {
+  HeaderWrapper,
+  Inner,
+  Logo,
+  LogoContainer,
+  Nav,
+  NavItem,
+  Hamburger,
+  HamburgerLine,
+} from "./HeaderStyle";
+import LogoImage from "../../assets/images/logo.png";
 
 const Header = () => {
   return (
-    <header className="Header">
-      <div className="Header-Inner">
-        <Link to="/home" className="Header-LogoContainer">
-          <img src={Logo} alt="FOI logo" className="Header-Logo" />
-        </Link>
-        <div className="Header-NavHamburger">
-          <div className="Header-NavHamburgerLine"></div>
-          <div className="Header-NavHamburgerLine"></div>
-          <div className="Header-NavHamburgerLine"></div>
-        </div>
-        <nav className="Header-Nav">
-          <NavLink className="Header-NavItem" activeClassName="Header-NavItem_active" to="/home" >
+    <HeaderWrapper>
+      <Inner>
+        <LogoContainer to="/">
+          <Logo src={LogoImage} alt="FOI logo" />
+        </LogoContainer>
+        <Hamburger>
+          <HamburgerLine />
+          <HamburgerLine />
+          <HamburgerLine />
+        </Hamburger>
+        <Nav>
+          <NavItem to="/" >
             Home
-          </NavLink>
-          <NavLink className="Header-NavItem" activeClassName="Header-NavItem_active" to="/events">
+          </NavItem>
+          <NavItem to="/events">
             Events
-          </NavLink>
-        </nav>
-      </div>
-    </header>
+          </NavItem>
+        </Nav>
+      </Inner>
+    </HeaderWrapper>
   );
 };
 
