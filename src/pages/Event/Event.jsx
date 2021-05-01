@@ -1,36 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Section from "../../components/Section/Section";
-import EventInfo from './../../components/EventInfo/EventInfo';
+import EventInfo from "./../../components/EventInfo/EventInfo";
 
-import "./Event.scss";
-import * as data from "../../utils/data";
+import { Title } from "../../lib/style/generalStyles";
+import eventsMock from "./../../lib/mock/events";
 
-const Event = () => {
-  //This events mock data will be replaced with an actual Axios or ApiSauce API call
-  const {
-    title,
-    location,
-    date,
-    attendance,
-    maxAttendance,
-    company,
-    image,
-  } = data.mockEvent;
+const Event = (prop) => {
+  const routeEventId = parseInt(prop.match.params.id);
+  const [events, setEvents] = useState(null);
+  const [event, setEvent] = useState(null);
+
+  useEffect(() => {
+    setEvents(eventsMock);
+  }, []);
+
+  useEffect(() => {
+    events && setEvent(events.find((event) => event.id === routeEventId));
+  }, [events]);
 
   return (
     <>
-      <h1 className="Event-Title">{title}</h1>
-      <Section withoutTopPadding>
-        <EventInfo
-          location={location}
-          date={date}
-          attendance={attendance}
-          maxAttendance={maxAttendance}
-          company={company}
-          image={image}
-        />
-      </Section>
+      {event && (
+        <>
+          <Title>{event.title}</Title>
+          <Section withoutTopPadding>
+            <EventInfo
+              location={event.location}
+              date={event.dateTime}
+              availability={event.availability}
+              company={event.company}
+              image={event.imageUrl}
+              description={event.description}
+            />
+          </Section>
+        </>
+      )}
     </>
   );
 };
