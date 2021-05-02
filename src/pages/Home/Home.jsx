@@ -31,7 +31,6 @@ function Home() {
                     imageAlt={event.imageAlt}
                     title={event.title}
                     description={event.shortDescription}
-                    buttonText="Find out more"
                     route={`/event/${event.id}`}
                   />
                 )

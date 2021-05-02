@@ -15,7 +15,6 @@ const EventCard = ({
   title,
   description,
   route,
-  buttonText,
 }) => {
   return (
     <EventCardWrapper>
@@ -24,7 +23,7 @@ const EventCard = ({
       </Figure>
       <Title>{title}</Title>
       <Description>{description}</Description>
-      <Button to={route}>{buttonText}</Button>
+      <Button to={route}>Find out more</Button>
     </EventCardWrapper>
   );
 };

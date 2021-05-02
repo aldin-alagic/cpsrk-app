@@ -1,15 +1,14 @@
 import React from "react";
 
-import Button from "../Button/Button";
-
 import "./EventInfo.scss";
+import { Button } from "../../lib/style/generalStyles";
 
-const EventInfo = ({ location, date, availability, company, image }) => {
+const EventInfo = ({ location, date, availability, company, image, imageAlt }) => {
   return (
     <>
       <div className="EventInfo">
         <figure className="EventInfo-Figure">
-          <img src={image} alt="UX/UI workshop" className="EventInfo-Image" />
+          <img src={image} alt={imageAlt} className="EventInfo-Image" />
         </figure>
         <div className="EventInfo-Content">
           <div className="EventInfo-ContentRow">
@@ -33,7 +32,7 @@ const EventInfo = ({ location, date, availability, company, image }) => {
             </div>
           </div>
           <div className="EventInfo-ContentRow">
-            <Button text="Prijavi se" />
+            <Button to="/">Prijavi se</Button>
           </div>
         </div>
       </div>

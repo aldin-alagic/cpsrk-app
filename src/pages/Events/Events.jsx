@@ -5,23 +5,22 @@ import { Title, Grid } from "../../lib/style/generalStyles";
 import eventsMock from "./../../lib/mock/events";
 
 const Events = () => {
-  const events = eventsMock;
-
+  var events = eventsMock;
   return (
     <>
       <Title>Events</Title>
       <Section withoutTopPadding>
         <Grid columns={4}>
-          {events.length ? (
-            events.map((eventItem) => (
+          {events ? (
+            events.map((event) => (
               <EventInfoCard
-                key={eventItem.id.toString()}
-                title={eventItem.title}
-                location={eventItem.location}
-                date={eventItem.date}
-                attendance={eventItem.attendance}
-                maxAttendance={eventItem.maxAttendance}
-                company={eventItem.company}
+                key={event.id.toString()}
+                title={event.title}
+                location={event.location}
+                date={event.dateTime}
+                availability={event.availability}
+                company={event.company}
+                route={`/event/${event.id}`}
               />
             ))
           ) : (

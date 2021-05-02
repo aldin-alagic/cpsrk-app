@@ -1,17 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-import Button from "../Button/Button";
 
 import "./EventInfoCard.scss";
+import { Button } from "../../lib/style/generalStyles";
 
 const EventInfoCard = ({
   title,
   location,
   date,
-  attendance,
-  maxAttendance,
+  availability,
   company,
+  route,
 }) => {
   return (
     <div className="EventInfoCard">
@@ -31,7 +29,7 @@ const EventInfoCard = ({
           <div className="EventInfoCard-Item">
             <h3 className="EventInfoCard-ItemTitle">Slobodna mjesta</h3>
             <p className="EventInfoCard-ItemValue">
-              {attendance}/{maxAttendance}
+              {availability}
             </p>
           </div>
           <div className="EventInfoCard-Item">
@@ -40,9 +38,7 @@ const EventInfoCard = ({
           </div>
         </div>
       </div>
-      <Link className="Button" to="/event">
-        <Button text="Find out more" />
-      </Link>
+      <Button to={route}>Find out more</Button>
     </div>
   );
 };
