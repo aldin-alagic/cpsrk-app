@@ -44,6 +44,7 @@ export const Logo = styled.img`
 export const LogoContainer = styled(NavLink)`
   display: block;
   width: 50px;
+  z-index: 2;
 
   @media screen and (${breakpoints.desktopLarge}) {
     width: 60px;
@@ -52,7 +53,6 @@ export const LogoContainer = styled(NavLink)`
 
 export const Nav = styled.nav`
     display: none;  
-
     @media screen and (${breakpoints.desktop}) {
         display: block;
     }
@@ -86,6 +86,7 @@ export const NavItem = styled(NavLink)`
 
 export const Hamburger = styled.div`
   width: 25px;
+  z-index: 2;
 
   @media screen and (${breakpoints.desktop}) {
     display: none;
