@@ -1,6 +1,14 @@
 import React from "react";
 
-import "./EventInfoCard.scss";
+import {
+  EventInfoCardWrapper,
+  Title,
+  Content,
+  ContentRow,
+  Item,
+  ItemTitle,
+  ItemValue,
+} from "./EventInfoCardStyle";
 import { Button } from "../../lib/style/generalStyles";
 
 const EventInfoCard = ({
@@ -12,34 +20,32 @@ const EventInfoCard = ({
   route,
 }) => {
   return (
-    <div className="EventInfoCard">
-      <h2 className="EventInfoCard-Title">{title}</h2>
-      <div className="EventInfoCard-Content">
-        <div className="EventInfoCard-ContentRow">
-          <div className="EventInfoCard-Item">
-            <h3 className="EventInfoCard-ItemTitle">Lokacija</h3>
-            <p className="EventInfoCard-ItemValue">{location}</p>
-          </div>
-          <div className="EventInfoCard-Item">
-            <h3 className="EventInfoCard-ItemTitle">Datum i vrijeme</h3>
-            <p className="EventInfoCard-ItemValue">{date}</p>
-          </div>
-        </div>
-        <div className="EventInfoCard-ContentRow">
-          <div className="EventInfoCard-Item">
-            <h3 className="EventInfoCard-ItemTitle">Slobodna mjesta</h3>
-            <p className="EventInfoCard-ItemValue">
-              {availability}
-            </p>
-          </div>
-          <div className="EventInfoCard-Item">
-            <h3 className="EventInfoCard-ItemTitle">Firma</h3>
-            <p className="EventInfoCard-ItemValue">{company}</p>
-          </div>
-        </div>
-      </div>
+    <EventInfoCardWrapper>
+      <Title>{title}</Title>
+      <Content>
+        <ContentRow>
+          <Item>
+            <ItemTitle>Lokacija</ItemTitle>
+            <ItemValue>{location}</ItemValue>
+          </Item>
+          <Item>
+            <ItemTitle>Datum i vrijeme</ItemTitle>
+            <ItemValue>{date}</ItemValue>
+          </Item>
+        </ContentRow>
+        <ContentRow>
+          <Item>
+            <ItemTitle>Slobodna mjesta</ItemTitle>
+            <ItemValue>{availability}</ItemValue>
+          </Item>
+          <Item>
+            <ItemTitle>Firma</ItemTitle>
+            <ItemValue>{company}</ItemValue>
+          </Item>
+        </ContentRow>
+      </Content>
       <Button to={route}>Find out more</Button>
-    </div>
+    </EventInfoCardWrapper>
   );
 };
 
