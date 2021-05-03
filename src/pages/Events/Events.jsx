@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import Section from "../../components/Section/Section";
 import EventInfoCard from "./../../components/EventInfoCard/EventInfoCard";
+import Loading from "../../components/Loading/Loading";
 
 import { Title, Grid } from "../../lib/style/generalStyles";
 import eventsMock from "./../../lib/mock/events";
@@ -18,9 +19,9 @@ const Events = () => {
     <>
       <Title>Events</Title>
       <Section withoutTopPadding>
-        <Grid columns={4}>
-          {events ? (
-            events.map((event) => (
+        {events ? (
+          <Grid columns={4}>
+            {events.map((event) => (
               <EventInfoCard
                 key={event.id}
                 title={event.title}
@@ -30,14 +31,14 @@ const Events = () => {
                 company={event.company}
                 route={`/event/${event.id}`}
               />
-            ))
-          ) : (
-            <p>There are no events!</p>
-          )}
-        </Grid>
+            ))}
+          </Grid>
+        ) : (
+          <Loading />
+        )}
       </Section>
     </>
   );
-}
+};
 
 export default Events;
