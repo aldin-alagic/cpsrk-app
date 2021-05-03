@@ -63,6 +63,9 @@ export const Button = styled(Link)`
 `;
 
 export const Main = styled.main`
+  margin-top: 80px;
+  flex: 1 0 auto;
+`;
 
 export const Image = styled.img`
   width: 100%;
