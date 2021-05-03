@@ -3,9 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
-
 import Events from "./pages/Events/Events";
 import Event from "./pages/Event/Event";
 import Home from "./pages/Home/Home";
@@ -13,6 +11,7 @@ import Home from "./pages/Home/Home";
 
 //Static
 import "./App.scss";
+import { Main } from "./lib/style/generalStyles";
 
 class App extends Component {
   componentDidMount() {

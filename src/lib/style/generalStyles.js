@@ -52,3 +52,7 @@ export const Button = styled(Link)`
     outline: none;
   }
 `;
+
+export const Main = styled.main`
+
+`;
