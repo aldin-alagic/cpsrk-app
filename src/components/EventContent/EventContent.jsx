@@ -1,9 +1,9 @@
 import React from "react";
 
-import "./EventInfo.scss";
+import "./EventContent.scss";
 import { Button } from "../../lib/style/generalStyles";
 
-const EventInfo = ({ location, date, availability, company, image, imageAlt }) => {
+const EventContent = ({ location, date, availability, company, image, imageAlt }) => {
   return (
     <>
       <div className="EventInfo">
@@ -55,4 +55,4 @@ const EventInfo = ({ location, date, availability, company, image, imageAlt }) =
   );
 };
 
-export default EventInfo;
+export default EventContent;

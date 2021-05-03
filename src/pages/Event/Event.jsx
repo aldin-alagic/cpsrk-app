@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import Section from "../../components/Section/Section";
-import EventInfo from "./../../components/EventInfo/EventInfo";
+import EventContent from "./../../components/EventContent/EventContent";
 
 import { Title } from "../../lib/style/generalStyles";
 import eventsMock from "./../../lib/mock/events";
@@ -17,7 +17,7 @@ const Event = (prop) => {
 
   useEffect(() => {
     events && setEvent(events.find((event) => event.id === routeEventId));
-  }, [events]);
+  }, [events, routeEventId]);
 
   return (
     <>
@@ -25,7 +25,7 @@ const Event = (prop) => {
         <>
           <Title>{event.title}</Title>
           <Section withoutTopPadding>
-            <EventInfo
+            <EventContent
               location={event.location}
               date={event.dateTime}
               availability={event.availability}
