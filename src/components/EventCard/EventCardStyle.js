@@ -12,7 +12,7 @@ export const EventCardWrapper = styled.div`
     transition: ${transitionCubic};
 
     &:hover {
-        box-shadow: ${boxShadowHover}
+        box-shadow: ${boxShadowHover};
     }
 `;
 
