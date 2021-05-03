@@ -14,12 +14,18 @@ export const Grid = styled.div`
 
   @media screen and (${breakpoints.desktop}) {
     grid-template-columns: repeat(3, 1fr);
-    ${(props) => props.columns === 3 && "padding: 0 32px"}
+
+    ${(props) => props.columns === 3 && `
+      padding: 0 32px;
+    `};
   }
 
   @media screen and (${breakpoints.desktopLarge}) {
     grid-template-columns: repeat(${(props) => props.columns}, 1fr);
-    ${(props) => props.columns === 3 && "padding: 0 84px;"}
+    
+    ${(props) => props.columns === 3 && `
+      padding: 0 84px;
+    `};
   }
 `;
 
