@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Section from "../../components/Section/Section";
 import EventInfoCard from "./../../components/EventInfoCard/EventInfoCard";
 
@@ -5,7 +6,14 @@ import { Title, Grid } from "../../lib/style/generalStyles";
 import eventsMock from "./../../lib/mock/events";
 
 const Events = () => {
-  var events = eventsMock;
+  const [events, setEvents] = useState(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setEvents(eventsMock);
+    }, 1000);
+  }, [events]);
+
   return (
     <>
       <Title>Events</Title>
@@ -14,7 +22,7 @@ const Events = () => {
           {events ? (
             events.map((event) => (
               <EventInfoCard
-                key={event.id.toString()}
+                key={event.id}
                 title={event.title}
                 location={event.location}
                 date={event.dateTime}
