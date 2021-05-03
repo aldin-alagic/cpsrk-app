@@ -3,11 +3,10 @@ import React from "react";
 import {
   EventCardWrapper,
   Figure,
-  Image,
   Title,
   Description,
 } from "./EventCardStyle";
-import { Button } from "../../lib/style/generalStyles";
+import { Button, Image } from "../../lib/style/generalStyles";
 
 const EventCard = ({
   image,

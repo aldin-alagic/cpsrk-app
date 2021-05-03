@@ -24,12 +24,6 @@ export const Figure = styled.figure`
     overflow: hidden;
 `;
 
-export const Image = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`;
-
 export const Title = styled.h3`
     font-size: 18px;
     margin-bottom: 10px;    
