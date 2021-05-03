@@ -24,8 +24,17 @@ export const Grid = styled.div`
 `;
 
 export const Title = styled.h1`
+  font-size: 1.5em;
   margin-bottom: 32px;
   text-align: center;
+
+  @media screen and (${breakpoints.mobileLarge}) {
+    font-size: 1.7em;
+  }
+
+  @media screen and (${breakpoints.tablet}) {
+    font-size: 2em;
+  }
 `;
 
 export const Button = styled(Link)`
