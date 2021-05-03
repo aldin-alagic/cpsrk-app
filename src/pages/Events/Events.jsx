@@ -5,9 +5,11 @@ import Loading from "../../components/Loading/Loading";
 
 import { Title, Grid } from "../../lib/style/generalStyles";
 import eventsMock from "./../../lib/mock/events";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 const Events = () => {
   const [events, setEvents] = useState(null);
+  const [eventFilter, setEventFilter] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -15,13 +17,22 @@ const Events = () => {
     }, 1000);
   }, [events]);
 
+  const handleFilterChange = (e) => {
+    setEventFilter(e.target.value);
+  }
+
   return (
     <>
       <Title>Events</Title>
       <Section withoutTopPadding>
+        <SearchBar
+          onFilterChange={handleFilterChange}
+          placeholder="Search events by title..."
+          disabled={events === null}
+        />
         {events ? (
           <Grid columns={4}>
-            {events.map((event) => (
+            {events.map((event) => (!eventFilter || event.title.includes(eventFilter)) && (
               <EventInfoCard
                 key={event.id}
                 title={event.title}
