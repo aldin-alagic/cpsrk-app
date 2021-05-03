@@ -1,42 +1,59 @@
 import React from "react";
 
-import "./EventContent.scss";
-import { Button } from "../../lib/style/generalStyles";
+import {
+  EventContentWrapper,
+  InfoWrapper,
+  Figure,
+  Info,
+  InfoRow,
+  Item,
+  ItemTitle,
+  ItemValue,
+  Description,
+} from "./EventContentStyle";
+import { Image, Button } from "../../lib/style/generalStyles";
 
-const EventContent = ({ location, date, availability, company, image, imageAlt }) => {
+const EventContent = ({
+  location,
+  date,
+  availability,
+  company,
+  image,
+  imageAlt,
+}) => {
   return (
-    <>
-      <div className="EventInfo">
-        <figure className="EventInfo-Figure">
-          <img src={image} alt={imageAlt} className="EventInfo-Image" />
-        </figure>
-        <div className="EventInfo-Content">
-          <div className="EventInfo-ContentRow">
-            <div className="EventInfo-Item">
-              <h3 className="EventInfo-ItemTitle">Lokacija</h3>
-              <p className="EventInfo-ItemValue">{location}</p>
-            </div>
-            <div className="EventInfo-Item">
-              <h3 className="EventInfo-ItemTitle">Datum i vrijeme</h3>
-              <p className="EventInfo-ItemValue">{date}</p>
-            </div>
-          </div>
-          <div className="EventInfo-ContentRow">
-            <div className="EventInfo-Item">
-              <h3 className="EventInfo-ItemTitle">Slobodna mjesta</h3>
-              <p className="EventInfo-ItemValue">{availability}</p>
-            </div>
-            <div className="EventInfo-Item">
-              <h3 className="EventInfo-ItemTitle">Firma</h3>
-              <p className="EventInfo-ItemValue">{company}</p>
-            </div>
-          </div>
-          <div className="EventInfo-ContentRow">
+    <EventContentWrapper>
+      <InfoWrapper>
+        <Figure>
+          <Image src={image} alt={imageAlt} />
+        </Figure>
+        <Info>
+          <InfoRow>
+            <Item>
+              <ItemTitle>Lokacija</ItemTitle>
+              <ItemValue>{location}</ItemValue>
+            </Item>
+            <Item>
+              <ItemTitle>Datum i vrijeme</ItemTitle>
+              <ItemValue>{date}</ItemValue>
+            </Item>
+          </InfoRow>
+          <InfoRow>
+            <Item>
+              <ItemTitle>Slobodna mjesta</ItemTitle>
+              <ItemValue>{availability}</ItemValue>
+            </Item>
+            <Item>
+              <ItemTitle>Firma</ItemTitle>
+              <ItemValue>{company}</ItemValue>
+            </Item>
+          </InfoRow>
+          <InfoRow>
             <Button to="/">Prijavi se</Button>
-          </div>
-        </div>
-      </div>
-      <div className="EventInfo-Description">
+          </InfoRow>
+        </Info>
+      </InfoWrapper>
+      <Description>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique,
         ex sit amet semper elementum, libero nisl condimentum dolor, a dictum
         risus lectus quis justo. Quisque consequat ut lorem vitae commodo. Nunc
@@ -50,8 +67,8 @@ const EventContent = ({ location, date, availability, company, image, imageAlt }
         ac. Integer lacinia, velit dapibus congue consectetur, nisi justo
         consectetur felis, sit amet placerat lacus libero in dui. Quisque quis
         nisi felis.
-      </div>
-    </>
+      </Description>
+    </EventContentWrapper>
   );
 };
 
