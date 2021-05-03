@@ -1,10 +1,10 @@
 import { HamburgerNavWrapper, NavItem } from "./HamburgerNavStyles";
 
-const HamburgerNav = ({ opened }) => {
+const HamburgerNav = ({ onClick, opened }) => {
   return (
     <HamburgerNavWrapper opened={opened}>
-      <NavItem to="/">Home</NavItem>
-      <NavItem to="/events">Events</NavItem>
+      <NavItem onClick={onClick} to="/">Home</NavItem>
+      <NavItem onClick={onClick} to="/events">Events</NavItem>
     </HamburgerNavWrapper>
   );
 };

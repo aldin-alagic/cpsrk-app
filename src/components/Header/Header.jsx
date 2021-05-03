@@ -17,13 +17,17 @@ import LogoImage from "../../assets/images/logo.png";
 const Header = () => {
   const [hamburgerNavOpened, setHamburgerNavOpened] = useState(false);
 
+  const handleHamburgerClick = () => {
+    setHamburgerNavOpened(!hamburgerNavOpened);
+  }
+
   return (
     <HeaderWrapper>
       <Inner>
         <LogoContainer to="/">
           <Logo src={LogoImage} alt="FOI logo" />
         </LogoContainer>
-        <Hamburger onClick={() => setHamburgerNavOpened(!hamburgerNavOpened)}>
+        <Hamburger onClick={handleHamburgerClick}>
           <HamburgerLine />
           <HamburgerLine />
           <HamburgerLine />
@@ -33,7 +37,7 @@ const Header = () => {
           <NavItem to="/events">Events</NavItem>
         </Nav>
       </Inner>
-      <HamburgerNav opened={hamburgerNavOpened} />
+      <HamburgerNav onClick={handleHamburgerClick} opened={hamburgerNavOpened} />
     </HeaderWrapper>
   );
 };
