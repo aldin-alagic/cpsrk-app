@@ -33,6 +33,10 @@ export const NavItem = styled(NavLink)`
   padding: 20px 0px;
   text-align: center;
 
+  &.active {
+    color: ${colors.red};
+  }
+
   &:hover {
     color: ${colors.red};
   }

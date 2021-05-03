@@ -59,6 +59,10 @@ export const Nav = styled.nav`
 `;
 
 export const NavItem = styled(NavLink)`
+  &.active {
+    color: ${colors.red};
+  }
+
   &:hover {
     color: ${colors.red};
   }
