@@ -14,7 +14,6 @@ import {
   InputCheckbox,
   InputError,
   ButtonSubmit,
-  Button,
 } from "../../lib/style/generalStyles";
 
 const Register = () => {
