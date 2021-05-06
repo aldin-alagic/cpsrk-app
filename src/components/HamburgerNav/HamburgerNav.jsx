@@ -5,6 +5,8 @@ const HamburgerNav = ({ onClick, opened }) => {
     <HamburgerNavWrapper opened={opened}>
       <NavItem onClick={onClick} to="/">Home</NavItem>
       <NavItem onClick={onClick} to="/events">Events</NavItem>
+      <NavItem  onClick={onClick} to="/login">Login</NavItem>
+      <NavItem  onClick={onClick} to="/register">Register</NavItem>
     </HamburgerNavWrapper>
   );
 };
