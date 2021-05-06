@@ -34,7 +34,7 @@ const Register = () => {
       lastName: Yup.string().required("Last name is required"),
       email: Yup.string().required("Email is required"),
       password: Yup.string()
-        .min("Password must be at least 8 characters long")
+        .min(8, "Password must be at least 8 characters long")
         .required("Email is required"),
       passwordConfirmation: Yup.string().test(
         "passwords-match",
