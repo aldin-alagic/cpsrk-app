@@ -201,6 +201,6 @@ export const InputCheckbox = styled.input`
 
 export const InputError = styled.p`
   font-size: 14px;
-  colors: ${colors.red};
+  color: ${colors.red};
   padding-top: 8px;
 `;
