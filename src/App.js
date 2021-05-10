@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Header from "./components/Header/Header";
+import Admin from './pages/Admin/Admin';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Events from "./pages/Events/Events";
@@ -27,11 +28,12 @@ class App extends Component {
         <Header />
         <Main>
           <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/admin" component={Admin} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/events" component={Events} />
             <Route path="/event/:id" component={Event} />
-            <Route exact path="/" component={Home} />
             <Redirect to="/" />
           </Switch>
         </Main>
