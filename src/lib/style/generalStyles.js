@@ -78,6 +78,7 @@ export const ButtonSubmit = styled.button`
 
 export const ButtonTable = styled.button`
   ${ButtonDefault}
+
   width: 160px;
   border-color: ${colors.black};
   background: ${colors.white};
@@ -85,12 +86,11 @@ export const ButtonTable = styled.button`
   font-weight: 600;
 
   &:hover {
-    border-color: ${colors.green}
-    background: ${colors.white}
+    border-color: ${colors.green};
+    background: ${colors.white};
     color: ${colors.green};
   }
 `;
-
 
 export const Main = styled.main`
   margin-top: 80px;
@@ -104,7 +104,7 @@ export const Image = styled.img`
 `;
 
 export const Form = styled.form`
-  margin: 0 auto; 
+  margin: 0 auto;
 
   @media screen and (${breakpoints.mobileLarge}) {
     width: 400px;
@@ -124,12 +124,10 @@ export const FormRow = styled.div`
 `;
 
 export const FormTwoColumns = styled.div`
-  margin-bottom: 32px;
-
   @media screen and (${breakpoints.mobileLarge}) {
     display: grid;
-    grid-template-columns: repeat (2, 1fr);
-    column-gap; 12px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 12px;
   }
 `;
 
@@ -162,7 +160,7 @@ export const InputText = styled.input`
   padding: 0 10px;
   outline: none;
   font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 
   &:focus {
     border-color: ${colors.yellow};
@@ -181,7 +179,7 @@ export const TextArea = styled.textarea`
   padding: 10px;
   outline: none;
   font-size: 14px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   min-width: 100%;
 
   &:focus {
