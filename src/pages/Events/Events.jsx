@@ -32,7 +32,7 @@ const Events = () => {
         />
         {events ? (
           <Grid columns={4}>
-            {events.map((event) => (!eventFilter || event.title.includes(eventFilter)) && (
+            {events.map((event) => (!eventFilter || event.title.toLowerCase().includes(eventFilter.toLowerCase())) && (
               <EventInfoCard
                 key={event.id}
                 title={event.title}
