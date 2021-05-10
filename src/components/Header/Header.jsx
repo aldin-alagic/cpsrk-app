@@ -37,6 +37,7 @@ const Header = () => {
           <NavItem to="/events">Events</NavItem>
           <NavItem to="/login">Login</NavItem>
           <NavItem to="/register">Register</NavItem>
+          <NavItem  to="/admin">Admin</NavItem>
         </Nav>
       </Inner>
       <HamburgerNav onClick={handleHamburgerClick} opened={hamburgerNavOpened} />
