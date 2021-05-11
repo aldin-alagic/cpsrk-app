@@ -26,13 +26,14 @@ export const ModalWrapper = styled.div`
 
 export const Inner = styled.div`
   margin: 30px;
-  padding: 2em;
+  padding: 1em;
   background: ${colors.white};
   border-radius: 6px;
   
   @media screen and (${breakpoints.mobileLarge}) {
     max-width: fit-content;
     margin: 64px auto;
+    padding: 2em;
   }
 `;
 
