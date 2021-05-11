@@ -5,7 +5,7 @@ import { colors, breakpoints } from "../../lib/style/theme";
 import { MdDelete } from "react-icons/md";
 
 export const TableWrapper = styled.table`
-  table-layout: fixed;
+  table-layout: auto !important;
   width: 100%;
   text-align: left;
   border-collapse: collapse;
@@ -26,6 +26,7 @@ export const TableBody = styled.tbody``;
 export const Th = styled.th`
   padding: 12px;
   display: none;
+  width: auto;
   
   &:nth-child(-n + 2) {
     display: table-cell !important;
@@ -53,6 +54,7 @@ export const Tr = styled.tr`
 export const Td = styled.td`
   padding: 12px;
   display: none;
+  width: auto;
   
   &:nth-child(-n + 2) {
     display: table-cell !important;
