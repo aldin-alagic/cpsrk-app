@@ -124,10 +124,13 @@ export const FormRow = styled.div`
 `;
 
 export const FormTwoColumns = styled.div`
+    margin-bottom: 32px;
+
   @media screen and (${breakpoints.mobileLarge}) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 12px;
+    margin-bottom: 0;
   }
 `;
 
@@ -169,6 +172,28 @@ export const InputText = styled.input`
   @media screen and (${breakpoints.desktop}) {
     font-size: 16px;
   }
+`;
+
+export const Select = styled.select`
+  border: 1px solid ${colors.lightGrey};
+  border-radius: 6px;
+  width: 100%;
+  height: 42px;
+  padding: 0 10px;
+  outline: none;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+
+  &:focus {
+    border-color: ${colors.yellow};
+  }
+
+  @media screen and (${breakpoints.desktop}) {
+    font-size: 16px;
+  }
+`;
+
+export const SelectOption = styled.option`
 `;
 
 export const TextArea = styled.textarea`
