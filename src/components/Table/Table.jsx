@@ -24,11 +24,20 @@ import {
   InputLabel,
   InputText,
   TextArea,
+  Select,
+  SelectOption,
   InputError,
   ButtonSubmit,
 } from "../../lib/style/generalStyles";
+import categoriesMock from "./../../lib/mock/eventCategories";
+import companiesMock from "./../../lib/mock/companies";
+
 
 const Table = () => {
+  const categories = [...categoriesMock];
+  const companies = [...companiesMock];
+
+
   const [events, setEvents] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -105,11 +114,15 @@ const Table = () => {
           <FormTwoColumns>
             <FormRow>
               <InputLabel htmlFor="category">Category</InputLabel>
-              <InputText
+              <Select
                 id="category"
-                type="text"
                 {...formik.getFieldProps("category")}
-              />
+              >
+                <SelectOption value="">Select</SelectOption>
+                {categories.map((category) => 
+                  <SelectOption key={category.value} value={category.value}>{category.label}</SelectOption>
+                )}
+              </Select>
               {formik.touched.category && formik.errors.category && (
                 <InputError>{formik.errors.category}</InputError>
               )}
@@ -166,11 +179,15 @@ const Table = () => {
             </FormRow>
             <FormRow>
               <InputLabel htmlFor="company">Company</InputLabel>
-              <InputText
+              <Select
                 id="company"
-                type="text"
                 {...formik.getFieldProps("company")}
-              />
+              >
+                <SelectOption value="">Select</SelectOption>
+                {companies.map((company) => 
+                  <SelectOption key={company.value} value={company.value}>{company.label}</SelectOption>
+                )}
+              </Select>
               {formik.touched.company && formik.errors.company && (
                 <InputError>{formik.errors.company}</InputError>
               )}
