@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-import { colors, transitionEase } from "../../lib/style/theme";
+import { colors, transitionEase, breakpoints } from "../../lib/style/theme";
 
 export const ModalWrapper = styled.div`
+  height: 100%;
+  overflow-y: scroll;
   position: fixed;
   background-color: ${colors.blackOverlay};
   top: 0;
@@ -23,14 +25,15 @@ export const ModalWrapper = styled.div`
 `;
 
 export const Inner = styled.div`
-  width: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: 30px;
   padding: 2em;
   background: ${colors.white};
   border-radius: 6px;
+  
+  @media screen and (${breakpoints.mobileLarge}) {
+    max-width: fit-content;
+    margin: 64px auto;
+  }
 `;
 
 export const Header = styled.div`
