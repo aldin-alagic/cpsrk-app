@@ -4,6 +4,7 @@ import * as Yup from "yup";
 
 import Section from "../../components/Section/Section";
 import Loading from "./../../components/Loading/Loading";
+
 import {
   Title,
   Form,
@@ -14,10 +15,15 @@ import {
   InputCheckbox,
   InputError,
   ButtonSubmit,
+  SuccessMessage,
 } from "../../lib/style/generalStyles";
+import { registerUser } from "./../../api/register";
 
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [isRequestFinished, setIsRequestFinished] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -45,20 +51,48 @@ const Register = () => {
       ),
     }),
 
-    onSubmit: (values) => {
+    onSubmit: (values, { resetForm }) => {
       setIsLoading(true);
+      setIsRequestFinished(false);
 
-      setTimeout(() => {
-        setIsLoading(false);
-        alert(JSON.stringify(values));
-      }, 1000);
+      const user = {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        password: values.password,
+        isAdmin: values.isAdmin,
+      };
+
+      registerUser(user)
+        .then((result) => {
+          console.log(result);
+          resetForm({});
+          setIsError(false);
+          setSuccessMessage("You've registered.");
+          setTimeout(() => {
+            setIsRequestFinished(true);
+          }, 4000);
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsError(true);
+          setSuccessMessage("Something went wrong.");
+        })
+        .finally(() => {
+          setIsLoading(false);
+          setIsRequestFinished(true);
+        });
     },
   });
+
 
   return (
     <>
       <Title>Register</Title>
       <Section withoutTopPadding>
+        {isRequestFinished && (
+          <SuccessMessage isError={isError}>{successMessage}</SuccessMessage>
+        )}
         {!isLoading ? (
           <Form onSubmit={formik.handleSubmit}>
             <FormRow>
