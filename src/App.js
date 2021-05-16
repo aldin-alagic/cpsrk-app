@@ -6,13 +6,11 @@ import Header from "./components/Header/Header";
 import Admin from './pages/Admin/Admin';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import Events from "./pages/Events/Events";
 import Event from "./pages/Event/Event";
+import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 
-
-//Static
 import "./App.scss";
 import { Main } from "./lib/style/generalStyles";
 
@@ -28,12 +26,12 @@ class App extends Component {
         <Header />
         <Main>
           <Switch>
-            <Route exact path="/" component={Home} />
             <Route path="/admin" component={Admin} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/events" component={Events} />
             <Route path="/event/:id" component={Event} />
+            <Route path="/events" component={Events} />
+            <Route exact path="/" component={Home} />
             <Redirect to="/" />
           </Switch>
         </Main>
