@@ -69,8 +69,9 @@ const Register = () => {
           resetForm({});
           setIsError(false);
           setSuccessMessage("You've registered.");
+
           setTimeout(() => {
-            setIsRequestFinished(true);
+            setIsRequestFinished(false);
           }, 4000);
         })
         .catch((error) => {
