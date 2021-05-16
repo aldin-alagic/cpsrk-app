@@ -14,7 +14,8 @@ import {
   ButtonSubmit,
   SuccessMessage,
 } from "../../lib/style/generalStyles";
-import { loginUser } from './../../api/login';
+import { loginUser } from "./../../api/login";
+import { getAllUSers } from "./../../api/user";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,41 +32,37 @@ const Login = () => {
     validationSchema: Yup.object({
       email: Yup.string().required("Email is required"),
       password: Yup.string()
-        .min(8,"Password must be at least 8 characters long")
+        .min(8, "Password must be at least 8 characters long")
         .required("Email is required"),
     }),
 
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       setIsLoading(true);
+      setIsError(false);
       setIsRequestFinished(false);
 
-      const user = {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password,
-        isAdmin: values.isAdmin,
-      };
+      try {
+        const response = await loginUser(values);
+        const users = await getAllUSers(response.token);
+        const isAdmin = users.find((u) => u.email === values.email).isAdmin;
 
-      loginUser(user)
-        .then((result) => {
-          console.log(result);
-          resetForm({});
-          setIsError(false);
-          setSuccessMessage("You've logged in.");
-          setTimeout(() => {
-            setIsRequestFinished(true);
-          }, 4000);
-        })
-        .catch((error) => {
-          console.log(error);
-          setIsError(true);
-          setSuccessMessage("Something went wrong.");
-        })
-        .finally(() => {
-          setIsLoading(false);
-          setIsRequestFinished(true);
-        });
+        localStorage.setItem("authToken", response.token);
+        localStorage.setItem("isAdmin", isAdmin);
+
+        setSuccessMessage("You've logged in.");
+        resetForm({});
+
+        setTimeout(() => {
+          setIsRequestFinished(false);
+        }, 4000);
+        
+      } catch (error) {
+        setIsError(true);
+        setSuccessMessage("Something went wrong.");
+      } finally {
+        setIsLoading(false);
+        setIsRequestFinished(true);
+      }
     },
   });
 
