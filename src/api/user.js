@@ -5,6 +5,5 @@ export const getAllUSers = (authToken) => {
     headers: {
       "auth-token": authToken,
     },
-    body: JSON.stringify(user),
   }).then((res) => res.json());
 };
