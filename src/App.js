@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -11,36 +11,27 @@ import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 
-
-//Static
 import "./App.scss";
 import { Main } from "./lib/style/generalStyles";
 
-
-class App extends Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
-  render() {
-    return (
-      <ScrollToTop>
-        <Header />
-        <Main>
-          <Switch>
-            <Route path="/admin" component={Admin} />
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/event/:id" component={Event} />
-            <Route path="/events" component={Events} />
-            <Route exact path="/" component={Home} />
-            <Redirect to="/" />
-          </Switch>
-        </Main>
-        <Footer />
-      </ScrollToTop>
-    );
-  }
+const App = () => {
+  return (
+    <ScrollToTop>
+      <Header />
+      <Main>
+        <Switch>
+          <Route path="/admin" component={Admin} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/event/:id" component={Event} />
+          <Route path="/events" component={Events} />
+          <Route exact path="/" component={Home} />
+          <Redirect to="/" />
+        </Switch>
+      </Main>
+      <Footer />
+    </ScrollToTop>
+  );
 }
 
 export default App;
