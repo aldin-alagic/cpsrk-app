@@ -24,7 +24,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <Inner>
-        <LogoContainer to="/">
+        <LogoContainer to="/" exact>
           <Logo src={LogoImage} alt="FOI logo" />
         </LogoContainer>
         <Hamburger onClick={handleHamburgerClick}>
@@ -33,7 +33,7 @@ const Header = () => {
           <HamburgerLine />
         </Hamburger>
         <Nav>
-          <NavItem to="/">Home</NavItem>
+          <NavItem to="/" exact>Home</NavItem>
           <NavItem to="/events">Events</NavItem>
           <NavItem to="/login">Login</NavItem>
           <NavItem to="/register">Register</NavItem>
