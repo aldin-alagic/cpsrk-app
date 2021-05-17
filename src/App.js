@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Header from "./components/Header/Header";
-import Admin from './pages/Admin/Admin';
-import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
+import Admin from "./pages/Admin/Admin";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Event from "./pages/Event/Event";
 import Events from "./pages/Events/Events";
 import Home from "./pages/Home/Home";
@@ -13,15 +13,46 @@ import Footer from "./components/Footer/Footer";
 
 import "./App.scss";
 import { Main } from "./lib/style/generalStyles";
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const handleLogin = (isAdmin) => {
+    setIsLoggedIn(true);
+    setIsAdmin(isAdmin);
+  };
+
+  const handleLogout = () => {
+    console.log("loging out");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("isAdmin");
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+  }
+
+  useEffect(() => {
+    console.log("app.js", isLoggedIn, isAdmin);
+
+    const authToken = localStorage.getItem("authToken");
+    const isAdminNew = localStorage.getItem("isAdmin");
+    setIsLoggedIn(authToken ? true : false);
+    setIsAdmin(isAdminNew === "true" ? true : false);
+
+  }, [isLoggedIn, isAdmin]);
+
+
   return (
     <ScrollToTop>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} isAdmin={isAdmin} onLogout={handleLogout} />
       <Main>
         <Switch>
-          <Route path="/admin" component={Admin} />
-          <Route path="/login" component={Login} />
+          <ProtectedRoute isAdmin={isAdmin} path="/admin" component={Admin} />
+          <Route
+            path="/login"
+            render={ (props) => <Login {...props} onLogin={handleLogin} /> }
+          />
           <Route path="/register" component={Register} />
           <Route path="/event/:id" component={Event} />
           <Route path="/events" component={Events} />
@@ -32,6 +63,6 @@ const App = () => {
       <Footer />
     </ScrollToTop>
   );
-}
+};
 
 export default App;
