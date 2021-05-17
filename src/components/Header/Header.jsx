@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import HamburgerNav from "../HamburgerNav/HamburgerNav";
-
 import {
   HeaderWrapper,
   Inner,
@@ -11,15 +9,21 @@ import {
   NavItem,
   Hamburger,
   HamburgerLine,
+  HamburgerNav,
+  HamburgerNavItem,
 } from "./HeaderStyle";
 import LogoImage from "../../assets/images/logo.png";
 
-const Header = () => {
-  const [hamburgerNavOpened, setHamburgerNavOpened] = useState(false);
+const Header = ({ onLogout, isLoggedIn, isAdmin }) => {
+  const [isHamburgerNavOpened, setIsHamburgerNavOpened] = useState(false);
 
-  const handleHamburgerClick = () => {
-    setHamburgerNavOpened(!hamburgerNavOpened);
-  }
+  const handleHamburgerClick = (isLogout = false) => {
+    setIsHamburgerNavOpened(!isHamburgerNavOpened);
+
+    if (isLogout) {
+      onLogout();
+    }
+  };
 
   return (
     <HeaderWrapper>
@@ -27,21 +31,70 @@ const Header = () => {
         <LogoContainer to="/">
           <Logo src={LogoImage} alt="FOI logo" />
         </LogoContainer>
-        <Hamburger onClick={handleHamburgerClick}>
+        <Hamburger onClick={() => handleHamburgerClick()}>
           <HamburgerLine />
           <HamburgerLine />
           <HamburgerLine />
         </Hamburger>
+
         <Nav>
-          <NavItem to="/" exact>Home</NavItem>
+          <NavItem to="/" exact>
+            Home
+          </NavItem>
           <NavItem to="/events">Events</NavItem>
-          <NavItem to="/login">Login</NavItem>
-          <NavItem to="/register">Register</NavItem>
-          <NavItem  to="/admin">Admin</NavItem>
-          
+          {isAdmin && <NavItem to="/admin">Admin</NavItem>}
+          {isLoggedIn ? (
+            <NavItem to="/logout" onClick={() => onLogout()}>
+              Logout
+            </NavItem>
+          ) : (
+            <>
+              <NavItem to="/register">Register</NavItem>
+              <NavItem to="/login">Login</NavItem>
+            </>
+          )}
         </Nav>
+
+        <HamburgerNav opened={isHamburgerNavOpened}>
+          <HamburgerNavItem to="/" exact onClick={() => handleHamburgerClick()}>
+            Home
+          </HamburgerNavItem>
+          <HamburgerNavItem to="/events" onClick={() => handleHamburgerClick()}>
+            Events
+          </HamburgerNavItem>
+          {isAdmin && (
+            <HamburgerNavItem
+              to="/admin"
+              onClick={() => handleHamburgerClick()}
+            >
+              Admin
+            </HamburgerNavItem>
+          )}
+          {isLoggedIn ? (
+            <HamburgerNavItem
+              to="/logout"
+              onClick={() => handleHamburgerClick(true)}
+            >
+              Logout
+            </HamburgerNavItem>
+          ) : (
+            <>
+              <HamburgerNavItem
+                to="/register"
+                onClick={() => handleHamburgerClick()}
+              >
+                Register
+              </HamburgerNavItem>
+              <HamburgerNavItem
+                to="/login"
+                onClick={() => handleHamburgerClick()}
+              >
+                Login
+              </HamburgerNavItem>
+            </>
+          )}
+        </HamburgerNav>
       </Inner>
-      <HamburgerNav onClick={handleHamburgerClick} opened={hamburgerNavOpened} />
     </HeaderWrapper>
   );
 };
