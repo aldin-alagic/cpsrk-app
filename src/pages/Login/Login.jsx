@@ -17,7 +17,7 @@ import {
 import { loginUser } from "./../../api/login";
 import { getAllUSers } from "./../../api/user";
 
-const Login = () => {
+const Login = ({onLogin}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -46,6 +46,8 @@ const Login = () => {
         const users = await getAllUSers(response.token);
         const isAdmin = users.find((u) => u.email === values.email).isAdmin;
 
+        onLogin(isAdmin);
+
         localStorage.setItem("authToken", response.token);
         localStorage.setItem("isAdmin", isAdmin);
 
@@ -55,7 +57,7 @@ const Login = () => {
         setTimeout(() => {
           setIsRequestFinished(false);
         }, 4000);
-        
+
       } catch (error) {
         setIsError(true);
         setSuccessMessage("Something went wrong.");
