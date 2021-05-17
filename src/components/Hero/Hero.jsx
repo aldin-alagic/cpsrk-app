@@ -14,7 +14,7 @@ const Hero = () => {
       <Overlay>
         <Content>
           <Heading>
-            Centar za podršku studentima i razvoj karijera na FOI
+            Centar za podršku studentima i razvoj karijera
           </Heading>
           <Subheading>
             CPSRK aktivno radi na poboljšanju kvalitete cjelokupnog iskustva
