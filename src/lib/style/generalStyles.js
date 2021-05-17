@@ -79,7 +79,7 @@ export const ButtonSubmit = styled.button`
 export const ButtonTable = styled.button`
   ${ButtonDefault}
 
-  width: 160px;
+  width: 100%;
   border-color: ${colors.black};
   background: ${colors.white};
   color: ${colors.black};
@@ -89,6 +89,10 @@ export const ButtonTable = styled.button`
     border-color: ${colors.green};
     background: ${colors.white};
     color: ${colors.green};
+  }
+
+  @media screen and (${breakpoints.tablet}) {
+    width: 160px;
   }
 `;
 
