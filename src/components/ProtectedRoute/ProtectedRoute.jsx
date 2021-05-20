@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, isAdmin, ...rest }) => {
+import { AuthContext } from './../../context/AuthContext';
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const { isAdmin } = useContext(AuthContext);
   const isAdminStorage = localStorage.getItem("isAdmin");
+
   return (
     <Route
       {...rest}

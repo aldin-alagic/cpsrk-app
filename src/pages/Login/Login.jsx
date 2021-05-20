@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import Section from "../../components/Section/Section";
 import Loading from "./../../components/Loading/Loading";
+import { AuthContext } from './../../context/AuthContext';
 import {
   Title,
   Form,
@@ -17,7 +18,9 @@ import {
 import { loginUser } from "./../../api/login";
 import { getAllUSers } from "./../../api/user";
 
-const Login = ({onLogin}) => {
+const Login = () => {
+  const { setIsLoggedIn, setIsAdmin } = useContext(AuthContext);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -46,7 +49,8 @@ const Login = ({onLogin}) => {
         const users = await getAllUSers(response.token);
         const isAdmin = users.find((u) => u.email === values.email).isAdmin;
 
-        onLogin(isAdmin);
+        setIsLoggedIn(true);
+        setIsAdmin(isAdmin);
 
         localStorage.setItem("authToken", response.token);
         localStorage.setItem("isAdmin", isAdmin);

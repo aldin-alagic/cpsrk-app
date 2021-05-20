@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -12,17 +12,12 @@ import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 
 import "./App.scss";
+import { AuthContext } from "./context/AuthContext";
 import { Main } from "./lib/style/generalStyles";
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  const handleLogin = (isAdmin) => {
-    setIsLoggedIn(true);
-    setIsAdmin(isAdmin);
-  };
+  const { setIsLoggedIn, setIsAdmin, isLoggedIn, isAdmin } = useContext(AuthContext);
 
   const handleLogout = () => {
     console.log("loging out");
@@ -33,14 +28,13 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log("app.js", isLoggedIn, isAdmin);
-
     const authToken = localStorage.getItem("authToken");
     const isAdminNew = localStorage.getItem("isAdmin");
+
     setIsLoggedIn(authToken ? true : false);
     setIsAdmin(isAdminNew === "true" ? true : false);
-
-  }, [isLoggedIn, isAdmin]);
+    
+  }, [isLoggedIn, isAdmin, setIsLoggedIn, setIsAdmin]);
 
 
   return (
@@ -49,10 +43,7 @@ const App = () => {
       <Main>
         <Switch>
           <ProtectedRoute isAdmin={isAdmin} path="/admin" component={Admin} />
-          <Route
-            path="/login"
-            render={ (props) => <Login {...props} onLogin={handleLogin} /> }
-          />
+          <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <Route path="/event/:id" component={Event} />
           <Route path="/events" component={Events} />

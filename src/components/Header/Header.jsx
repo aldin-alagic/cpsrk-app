@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
+import { AuthContext } from './../../context/AuthContext';
 import {
   HeaderWrapper,
   Inner,
@@ -14,7 +15,8 @@ import {
 } from "./HeaderStyle";
 import LogoImage from "../../assets/images/logo.png";
 
-const Header = ({ onLogout, isLoggedIn, isAdmin }) => {
+const Header = ({ onLogout }) => {
+  const { isLoggedIn, isAdmin } = useContext(AuthContext);
   const [isHamburgerNavOpened, setIsHamburgerNavOpened] = useState(false);
 
   const handleHamburgerClick = (isLogout = false) => {
