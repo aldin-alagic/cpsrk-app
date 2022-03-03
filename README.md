@@ -12,7 +12,7 @@ You'll need to have Node 8.16.0 or Node 10.16.0 or later version on your local d
 To run the application locally switch to application folder:
 ```cd cpsrk-app```.
 Install npm packages with:
-```npm install```.
+```yarn install```.
 Then run the application with:
-```npm start```.
+```yarn start```.
 This will run the app in the development mode. After that app will appear on http://localhost:3000/.
